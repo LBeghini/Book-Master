@@ -1,7 +1,8 @@
 import React from 'react'
 import books from './books'
-import { Descriptions,Row, Spin } from 'antd';
+import { Descriptions,Row, Spin, Breadcrumb } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import {Link} from 'react-router-dom';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -25,10 +26,13 @@ class BookDetail extends React.Component{
     
     render(){
         const book = this.state.book ? (
-            <Descriptions title="Book Info" bordered="true" layout="vertical">
+            <Descriptions title="Book Info" bordered="true" layout="vertical" style={{width:'70%'}}>
+                <Descriptions.Item label="ISBN">{this.state.book.isbn}</Descriptions.Item>
                 <Descriptions.Item label="Title">{this.state.book.title}</Descriptions.Item>
                 <Descriptions.Item label="Author">{this.state.book.author}</Descriptions.Item>
                 <Descriptions.Item label="Year">{this.state.book.year}</Descriptions.Item>
+                <Descriptions.Item label="Publisher">{this.state.book.publisher}</Descriptions.Item>
+                <Descriptions.Item label="Language">{this.state.book.language}</Descriptions.Item>
           </Descriptions>
         ) : (
             <Spin indicator={antIcon} tip="Loading book..."/>
@@ -36,9 +40,17 @@ class BookDetail extends React.Component{
         );
 
         return (
-                <Row justify="center" gutter={[8, 32]}>
-                    {book}
-                </Row>
+            <div>
+            <Row>
+            <Breadcrumb>
+                <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
+                <Breadcrumb.Item>Book Detail</Breadcrumb.Item>
+            </Breadcrumb>
+            </Row>
+            <Row justify="center"  gutter={[0, 32]} style={{margin:0, padding:'5%'}}>
+                {book}
+            </Row>
+            </div>
         )
     }
 

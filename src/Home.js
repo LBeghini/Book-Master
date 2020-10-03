@@ -2,6 +2,7 @@ import React from 'react';
 import books from './books';
 import { BookFilled} from '@ant-design/icons';
 import { Row, Col, Card, Empty } from 'antd';
+import {Link} from 'react-router-dom';
 
 
 const Home = () => {
@@ -10,7 +11,7 @@ const Home = () => {
         books.map(book => {
             return (
                 <Col>
-                <a href={'/'+book.id}>
+                <Link to={'/'+book.id}>
                     <Card 
                         style={{ width: 250 }} 
                         key={book.id}
@@ -19,10 +20,10 @@ const Home = () => {
                         <Meta
                         avatar={<BookFilled />}
                         title={book.title} 
-                        description="This is the description"
+                        description={book.author}
                          />
                     </Card>
-                </a>
+                </Link>
                 </Col>
             )
         })
@@ -37,7 +38,7 @@ const Home = () => {
     )
 
     return(
-            <Row gutter={[0, 32]}>
+            <Row gutter={[0, 32]} style={{margin:0}}>
                 <Col span={18} offset={3}>
                     <Row justify="space-between" gutter={[8, 32]}>
                             {booksList}
