@@ -7,9 +7,8 @@ Book Master is an application made for the [App Masters](https://appmasters.io/p
 
 ## Technologies
 
-- ReactJS
-- Javascript
-- Ant Design
+- [ReactJS](https://reactjs.org)
+- [Ant Design](https://ant.design)
 
 ## How to run
 
