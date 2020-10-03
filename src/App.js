@@ -13,14 +13,14 @@ class App extends React.Component {
     return (
       <BrowserRouter>
           <Header/>
-          <Content style={{height: "calc(100vh - 20vh - 55px)" }}>
+          <Content style={{height: "calc(100vh - 20vh - 55px)", overflow:'auto' }}>
               <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route path='/:id' component={BookDetail}/>
               </Switch>
             </Content>
           <Footer style={{height: "55px", textAlign: 'center'}}>
-            Book Masters ©2020 Created by LBeghini
+            <span style={{ verticalAlign: 'middle', display: 'inline-block'}}>Book Masters ©2020 Created by LBeghini</span>
           </Footer>
       </BrowserRouter>
       );

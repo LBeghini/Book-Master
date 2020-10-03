@@ -10,11 +10,10 @@ const Home = () => {
     const booksList = books.length ? (
         books.map(book => {
             return (
-                <Col>
+                <Col key={book.id}>
                 <Link to={'/'+book.id}>
                     <Card 
                         style={{ width: 250 }} 
-                        key={book.id}
                         hoverable 
                         >
                         <Meta
@@ -40,7 +39,7 @@ const Home = () => {
     return(
             <Row gutter={[0, 32]} style={{margin:0}}>
                 <Col span={18} offset={3}>
-                    <Row justify="space-between" gutter={[8, 32]}>
+                    <Row justify="center" gutter={[8, 32]}>
                             {booksList}
                     </Row>
                 </Col>

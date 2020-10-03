@@ -4,7 +4,7 @@ import { Descriptions,Row, Spin, Breadcrumb } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom';
 
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'black' }} spin />;
 
 class BookDetail extends React.Component{
 
@@ -35,7 +35,7 @@ class BookDetail extends React.Component{
                 <Descriptions.Item label="Language">{this.state.book.language}</Descriptions.Item>
           </Descriptions>
         ) : (
-            <Spin indicator={antIcon} tip="Loading book..."/>
+            <Spin indicator={antIcon} tip="Loading book..." style={{color:'black'}}/>
 
         );
 
