@@ -1,7 +1,7 @@
 import React from 'react';
 import books from './books';
 import { BookFilled} from '@ant-design/icons';
-import { Row, Col, Card, Empty } from 'antd';
+import { Row, Col, Card, Empty, Button } from 'antd';
 import {Link} from 'react-router-dom';
 
 
@@ -11,18 +11,23 @@ const Home = () => {
         books.map(book => {
             return (
                 <Col key={book.id}>
-                <Link to={'/'+book.id}>
+
                     <Card 
-                        style={{ width: 250 }} 
+                        title={book.title}
+                        extra={<Link to={'/loan/'+book.id}><Button>Loan</Button></Link>}
+                        style={{ width: 350 }} 
                         hoverable 
+                        avatar={<BookFilled />}
+                        headStyle={{backgroundColor:'#52c41a'}}
                         >
+                        <Link to={'/'+book.id}>
                         <Meta
                         avatar={<BookFilled />}
-                        title={book.title} 
-                        description={book.author}
+                        title={book.author} 
+                        description={book.publisher}
                          />
+                         </Link>
                     </Card>
-                </Link>
                 </Col>
             )
         })
@@ -37,8 +42,8 @@ const Home = () => {
     )
 
     return(
-            <Row gutter={[0, 32]} style={{margin:0}}>
-                <Col span={18} offset={3}>
+            <Row gutter={[0, 32]} style={{margin:0}} justify="center">
+                <Col span={20}>
                     <Row justify="center" gutter={[8, 32]}>
                             {booksList}
                     </Row>

@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Home';
 import BookDetail from './BookDetail';
 import Header from './Header';
+import Loan from './Loan';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Layout } from 'antd';
 
@@ -16,6 +17,7 @@ class App extends React.Component {
           <Content style={{height: "calc(100vh - 20vh - 55px)", overflow:'auto' }}>
               <Switch>
                 <Route exact path='/' component={Home}/>
+                <Route path='/loan/:id' component={Loan}/>
                 <Route path='/:id' component={BookDetail}/>
               </Switch>
             </Content>
