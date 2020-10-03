@@ -9,18 +9,20 @@ Book Master is an application made for the [App Masters](https://appmasters.io/p
 
 - ReactJS
 - Javascript
-- ant-design
+- Ant Design
 
 ## How to run
 
-To run this project, it's required that you have install the following programs:
-- Node
-- NPM
+To run this project, it's required that you install the following programs:
+- [NodeJS](https://nodejs.org/en/)
+- Editor or IDE ([VSCode](https://code.visualstudio.com) recommended)
 
 After that, you'll need to clone this repo:
 ```
 git clone https://github.com/LBeghini/Book-Master.git
 ```
+
+Or download the source code from a [release](https://github.com/LBeghini/Book-Master/releases), for a specific version of the app.
 
 ### Developers
 
