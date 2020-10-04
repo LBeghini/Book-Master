@@ -1,22 +1,35 @@
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
-import { Card, Button } from 'antd';
+import { Card, Button, Modal } from 'antd';
 import {Link} from 'react-router-dom';
 
 const { Meta } = Card;
+const { confirm } = Modal;
 
+// function handleReturn (id) {
+//     localStorage.removeItem(id);
+// }
 
-function handleReturn (id) {
-    localStorage.removeItem(id);
+function showConfirm(id) {
+    confirm({
+      title: 'Do you Want to return this book?',
+      onOk() {
+        localStorage.removeItem(id);
+        console.log('OK');
+        window.location.reload();
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
 }
-
 
 const CardReceive = ({book, user}) => {
 
     return(
         <Card 
             title={book.title}
-            extra={<a onClick={() => handleReturn(book.id)} href="/"><Button>Return</Button></a>}
+            extra={<Button onClick={() => showConfirm(book.id)}>Return</Button>}
             style={{ width: 350 }} 
             hoverable 
             headStyle={{backgroundColor:'#f37370'}}

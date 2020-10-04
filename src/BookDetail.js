@@ -1,8 +1,10 @@
 import React from 'react'
 import books from './books'
-import { Descriptions,Row, Spin, Breadcrumb, Badge, Button } from 'antd';
+import { Descriptions,Row, Spin, Breadcrumb, Badge, Button, Modal } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom';
+
+const { confirm } = Modal;
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'black' }} spin />;
 
@@ -23,10 +25,19 @@ class BookDetail extends React.Component{
         }
     }
 
-    handleReceive (id) {
-        localStorage.removeItem(id);
+    showConfirm(id) {
+        confirm({
+          title: 'Do you Want to return this book?',
+          onOk() {
+            localStorage.removeItem(id);
+            console.log('OK');
+            window.location.reload();
+          },
+          onCancel() {
+            console.log('Cancel');
+          },
+        });
     }
-    
     
     render(){
         const book = this.state.book ? (
@@ -35,7 +46,7 @@ class BookDetail extends React.Component{
                 bordered layout="horizontal" 
                 style={{width:'70%'}} 
                 extra={localStorage.getItem(this.state.book.id)?(
-                    <a onClick={() => this.handleReceive(this.state.book.id)} href="/"><Button>Receive</Button></a>
+                    <Button onClick={() => this.showConfirm(this.state.book.id)}>Return</Button>
                 ):(
                     <Link to={'/loan/'+this.state.book.id}><Button>Loan</Button></Link>
                 )}
