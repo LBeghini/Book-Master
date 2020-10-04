@@ -1,35 +1,27 @@
 import React from 'react';
 import books from './books';
-import { BookFilled} from '@ant-design/icons';
-import { Row, Col, Card, Empty, Button } from 'antd';
-import {Link} from 'react-router-dom';
+import CardLoan from './CardLoan';
+import CardReceive from './CardReceive';
+import { Row, Col, Empty } from 'antd';
 
 
 const Home = () => {
-    const { Meta } = Card;
     const booksList = books.length ? (
         books.map(book => {
-            return (
+            if(localStorage.getItem(book.id)){
+                return(
+                    <Col key={book.id}>
+                        <CardReceive book={book} user={JSON.parse(localStorage.getItem(book.id))} />
+                    </Col>
+                )
+            }else{
+                return (
                 <Col key={book.id}>
-
-                    <Card 
-                        title={book.title}
-                        extra={<Link to={'/loan/'+book.id}><Button>Loan</Button></Link>}
-                        style={{ width: 350 }} 
-                        hoverable 
-                        avatar={<BookFilled />}
-                        headStyle={{backgroundColor:'#52c41a'}}
-                        >
-                        <Link to={'/'+book.id}>
-                        <Meta
-                        avatar={<BookFilled />}
-                        title={book.author} 
-                        description={book.publisher}
-                         />
-                         </Link>
-                    </Card>
+                    <CardLoan book={book}/>
                 </Col>
             )
+            }
+            
         })
     ) : (
         <Col span={24}>
@@ -42,13 +34,10 @@ const Home = () => {
     )
 
     return(
-            <Row gutter={[0, 32]} style={{margin:0}} justify="center">
-                <Col span={20}>
-                    <Row justify="center" gutter={[8, 32]}>
-                            {booksList}
-                    </Row>
-                </Col>
-            </Row>
+
+        <Row justify="center" gutter={[8, 32]}>
+                {booksList}
+        </Row>
     )
 
 } 

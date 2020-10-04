@@ -1,6 +1,6 @@
 import React from 'react'
 import books from './books'
-import { Descriptions,Row, Spin, Breadcrumb } from 'antd';
+import { Descriptions,Row, Spin, Breadcrumb, Badge, Button } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom';
 
@@ -22,17 +22,31 @@ class BookDetail extends React.Component{
             }
         }
     }
+
+    handleReceive (id) {
+        localStorage.removeItem(id);
+    }
     
     
     render(){
         const book = this.state.book ? (
-            <Descriptions title="Book Info" bordered="true" layout="vertical" style={{width:'70%'}}>
+            <Descriptions 
+                title="Book Info" 
+                bordered layout="horizontal" 
+                style={{width:'70%'}} 
+                extra={localStorage.getItem(this.state.book.id)?(
+                    <a onClick={() => this.handleReceive(this.state.book.id)} href="/"><Button>Receive</Button></a>
+                ):(
+                    <Link to={'/loan/'+this.state.book.id}><Button>Loan</Button></Link>
+                )}
+            >
                 <Descriptions.Item label="ISBN">{this.state.book.isbn}</Descriptions.Item>
-                <Descriptions.Item label="Title">{this.state.book.title}</Descriptions.Item>
-                <Descriptions.Item label="Author">{this.state.book.author}</Descriptions.Item>
-                <Descriptions.Item label="Year">{this.state.book.year}</Descriptions.Item>
+                <Descriptions.Item label="Title" span={3}>{this.state.book.title}</Descriptions.Item>
+                <Descriptions.Item label="Author" >{this.state.book.author}</Descriptions.Item>
                 <Descriptions.Item label="Publisher">{this.state.book.publisher}</Descriptions.Item>
+                <Descriptions.Item label="Year">{this.state.book.year}</Descriptions.Item>
                 <Descriptions.Item label="Language">{this.state.book.language}</Descriptions.Item>
+                <Descriptions.Item label="Status">{localStorage.getItem(this.state.book.id)?(<Badge status="error" text="Not available" />):(<Badge status="success" text="Available" />)}</Descriptions.Item>
           </Descriptions>
         ) : (
             <Spin indicator={antIcon} tip="Loading book..." style={{color:'black'}}/>

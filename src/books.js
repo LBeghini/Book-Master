@@ -44,6 +44,5 @@ const books = [
 
 ]
 
-localStorage.setItem('books', JSON.stringify(books));
 
 export default books;
