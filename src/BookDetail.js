@@ -11,7 +11,8 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'black' }} spin /
 class BookDetail extends React.Component{
 
     state = {
-        book : null
+        book : null,
+        loan : null
     }
 
     componentDidMount(){
@@ -19,7 +20,8 @@ class BookDetail extends React.Component{
         for (let b in books) {
             if (books[b].id === Number(id)) {
                 this.setState({
-                    book: books[b]
+                    book: books[b],
+                    loan : JSON.parse(localStorage.getItem(books[b].id))
                 })
             }
         }
@@ -57,7 +59,12 @@ class BookDetail extends React.Component{
                 <Descriptions.Item label="Publisher">{this.state.book.publisher}</Descriptions.Item>
                 <Descriptions.Item label="Year">{this.state.book.year}</Descriptions.Item>
                 <Descriptions.Item label="Language">{this.state.book.language}</Descriptions.Item>
-                <Descriptions.Item label="Status">{localStorage.getItem(this.state.book.id)?(<Badge status="error" text="Not available" />):(<Badge status="success" text="Available" />)}</Descriptions.Item>
+                {this.state.loan?(
+                        <Descriptions.Item label="Status"><Badge status="error" text="Not available" /></Descriptions.Item>
+                ):(
+                    <Descriptions.Item label="Status"><Badge status="success" text="Available" /></Descriptions.Item>
+                )
+                }
           </Descriptions>
         ) : (
             <Spin indicator={antIcon} tip="Loading book..." style={{color:'black'}}/>

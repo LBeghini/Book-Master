@@ -6,13 +6,9 @@ import {Link} from 'react-router-dom';
 const { Meta } = Card;
 const { confirm } = Modal;
 
-// function handleReturn (id) {
-//     localStorage.removeItem(id);
-// }
-
 function showConfirm(id) {
     confirm({
-      title: 'Do you Want to return this book?',
+      title: 'Do you want to return this book?',
       onOk() {
         localStorage.removeItem(id);
         console.log('OK');
