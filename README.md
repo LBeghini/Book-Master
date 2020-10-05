@@ -24,6 +24,8 @@ Each release of this project implements a proposed part of the internship proces
 | [Local Date Loan](https://github.com/LBeghini/Book-Master/releases/tag/v2.0) |      v2.0    |
 | [Node Backend](https://github.com/LBeghini/Book-Master/releases/tag/v3.0)    |      v3.0    |
 
+> Access the release page for a better description of what each release implements 
+
 
 ## Requirements
 
