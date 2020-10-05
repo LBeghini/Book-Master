@@ -15,7 +15,7 @@ const CardLoan = ({book}) => {
             hoverable 
             headStyle={{backgroundColor:'#8fd460'}}
             >
-            <Link to={'/'+book.id}>
+            <Link to={'/bookDetail/'+book.id}>
             <Meta
                 avatar={<BookFilled />}
                 title={'Author '+ book.author} 

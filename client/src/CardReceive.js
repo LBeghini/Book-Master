@@ -10,9 +10,9 @@ function showConfirm(id) {
     confirm({
       title: 'Do you want to return this book?',
       onOk() {
-        localStorage.removeItem(id);
-        console.log('OK');
-        window.location.reload();
+        fetch("http://localhost:5000/books/delete/"+id, 
+          {method:'GET'}
+        ).then(response => window.location.reload())
       },
       onCancel() {
         console.log('Cancel');
@@ -20,7 +20,7 @@ function showConfirm(id) {
     });
 }
 
-const CardReceive = ({book, user}) => {
+const CardReceive = ({book}) => {
 
     return(
         <Card 
@@ -30,11 +30,11 @@ const CardReceive = ({book, user}) => {
             hoverable 
             headStyle={{backgroundColor:'#f37370'}}
             >
-            <Link to={'/'+book.id}>
+            <Link to={'/bookDetail/'+book.id}>
             <Meta
                 avatar={<UserOutlined />}
-                title={'Name: ' +user.name} 
-                description={'Loan Date: ' +user.timestamp}
+                title={'Name: ' +book.loan.name} 
+                description={'Loan Date: ' +book.loan.timestamp}
             />
         </Link>
     </Card>

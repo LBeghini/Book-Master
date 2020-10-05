@@ -20,7 +20,7 @@ class App extends React.Component {
                   <Switch>
                     <Route exact path='/' component={Home}/>
                     <Route path='/loan/:id' component={Loan}/>
-                    <Route path='/:id' component={BookDetail}/>
+                    <Route path='/bookDetail/:id' component={BookDetail}/>
                   </Switch>
               </Col>
             </Row>

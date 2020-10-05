@@ -1,9 +1,8 @@
 import React from 'react'
-import books from './books'
 import {  Spin, Breadcrumb, Typography } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import {Link, Redirect} from 'react-router-dom';
-import { Form, Input, Button } from 'antd';
+import { Form, Button } from 'antd';
 const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'black' }} spin />;
 
 class Loan extends React.Component{
@@ -15,58 +14,36 @@ class Loan extends React.Component{
 
     componentDidMount(){
         let id = this.props.match.params.id;
-        for (let b in books) {
-            if (books[b].id === Number(id)) {
-                this.setState({
-                    book: books[b]
-                })
-            }
-        }
+        fetch('http://localhost:5000/books/bookDetail/'+this.props.match.params.id)
+        .then(response => response.json())
+        .then( responseJson=> {
+          this.setState({ book:responseJson.data });
+        },
+      )
     }
-
-    
-    handleSubmit = (values) => {
-        localStorage.setItem(this.state.book.id, JSON.stringify({
-            name: values.name, 
-            timestamp: new Date().toLocaleDateString()
-        }));
-        this.setState({
-            redirectToReferrer : true
-        })
-       
-      };
     
     render(){
-        const layout = {
-            labelCol: { span: 3 },
-            wrapperCol: { span: 10 },
-          };
           const tailLayout = {
-            wrapperCol: { offset: 3, span: 16 },
+            wrapperCol: { offset: 2, span: 16 },
           };
         const book = this.state.book ? (
             
-            <Form
-            {...layout}
-            name="basic"
-            initialValues={{ remember: true }}
-            onFinish={this.handleSubmit}            
-            >
+            <form method='POST' action={'http://localhost:5000/books/loans/' + this.state.book.id}>
             <Typography.Title level={3} style={{padding: '3%'}}>Confirm you want to borrow {this.state.book.title} book?</Typography.Title>
             <Form.Item
                 label="Name"
                 name="name"
-                rules={[{ required: true, message: 'Input your name' }]}
+                rules={[{ required: true}]}
             >
-                <Input />
-            </Form.Item>
-
+                <input type="text" id="name" name="name" required/>
+            </Form.Item> 
+            
             <Form.Item {...tailLayout}>
                 <Button htmlType="submit">
                 Submit
                 </Button>
             </Form.Item>
-            </Form>
+            </form>
         ) : (
             <Spin indicator={antIcon} tip="Loading book..." style={{color:'black'}}/>
 

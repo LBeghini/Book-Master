@@ -1,5 +1,4 @@
 import React from 'react'
-import books from './books'
 import { Descriptions,Row, Spin, Breadcrumb, Badge, Button, Modal } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom';
@@ -11,30 +10,26 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'black' }} spin /
 class BookDetail extends React.Component{
 
     state = {
-        book : null,
-        loan : null
+        book : null
     }
 
     componentDidMount(){
-        let id = this.props.match.params.id;
-        for (let b in books) {
-            if (books[b].id === Number(id)) {
-                this.setState({
-                    book: books[b],
-                    loan : JSON.parse(localStorage.getItem(books[b].id))
-                })
-            }
-        }
+        fetch('http://localhost:5000/books/bookDetail/'+this.props.match.params.id)
+        .then(response => response.json())
+        .then( responseJson=> {
+          this.setState({ book:responseJson.data });
+        },
+      )
     }
 
     showConfirm(id) {
         confirm({
           title: 'Do you Want to return this book?',
           onOk() {
-            localStorage.removeItem(id);
-            console.log('OK');
-            window.location.reload();
-          },
+            fetch("http://localhost:5000/books/delete/"+id, 
+          {method:'GET'}
+        ).then(response => window.location.reload())        
+        },
           onCancel() {
             console.log('Cancel');
           },
@@ -47,22 +42,37 @@ class BookDetail extends React.Component{
                 title="Book Info" 
                 bordered layout="horizontal" 
                 style={{width:'70%'}} 
-                extra={localStorage.getItem(this.state.book.id)?(
-                    <Button onClick={() => this.showConfirm(this.state.book.id)}>Return</Button>
+                extra={this.state.book.status?(
+                    <Button onClick={() => this.showConfirm(this.props.match.params.id)}>Return</Button>
                 ):(
                     <Link to={'/loan/'+this.state.book.id}><Button>Loan</Button></Link>
                 )}
             >
                 <Descriptions.Item label="ISBN">{this.state.book.isbn}</Descriptions.Item>
-                <Descriptions.Item label="Title" span={3}>{this.state.book.title}</Descriptions.Item>
+                <Descriptions.Item label="Title" span={2}>{this.state.book.title}</Descriptions.Item>
                 <Descriptions.Item label="Author" >{this.state.book.author}</Descriptions.Item>
                 <Descriptions.Item label="Publisher">{this.state.book.publisher}</Descriptions.Item>
                 <Descriptions.Item label="Year">{this.state.book.year}</Descriptions.Item>
                 <Descriptions.Item label="Language">{this.state.book.language}</Descriptions.Item>
-                {this.state.loan?(
-                        <Descriptions.Item label="Status"><Badge status="error" text="Not available" /></Descriptions.Item>
+                
+                <Descriptions.Item label="Status" span={2}>
+                {this.state.book.status?(
+                    <Badge status="error" text="Not available" />
+                    ):(
+                    <Badge status="success" text="Available" />
+                )
+                }
+                </Descriptions.Item>
+                {this.state.book.loan.name?(
+                    <Descriptions.Item label="UserName" >{this.state.book.loan.name}</Descriptions.Item>
                 ):(
-                    <Descriptions.Item label="Status"><Badge status="success" text="Available" /></Descriptions.Item>
+                    null
+                )
+                }
+                {this.state.book.loan.timestamp?(
+                    <Descriptions.Item label="Status">{this.state.book.loan.timestamp}</Descriptions.Item>
+                ):(
+                    null
                 )
                 }
           </Descriptions>
