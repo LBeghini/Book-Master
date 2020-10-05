@@ -3,7 +3,8 @@
 # :book: Book Master
 ## About
 
-Book Master is an application made for the [App Masters](https://appmasters.io/pt/) internship selection process. The goal was to create a part of a virtual library.
+Book Master is an application made for the [App Masters](https://appmasters.io/pt/) internship selection process. The goal was to create a part of a virtual library.  
+To see more about the development progress, visit the [Project](https://github.com/LBeghini/Book-Master/projects/1) page. 
 
 ## Technologies
 
@@ -75,3 +76,6 @@ npm start
 ```
 You can access the application on the [http://localhost:3000](http://localhost:3000).
 
+## License
+
+[MIT License](https://github.com/LBeghini/Book-Master/blob/master/LICENSE)
