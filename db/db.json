@@ -8,8 +8,11 @@
       "publisher": "O'Reilly Media",
       "language": "English",
       "isbn": 9352134192,
-      "status": false,
-      "loan": {}
+      "status": true,
+      "loan": {
+        "name": "Orange",
+        "timestamp": "10/6/2020"
+      }
     },
     {
       "id": 2,

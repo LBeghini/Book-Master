@@ -45,7 +45,7 @@ class BookDetail extends React.Component{
                 extra={this.state.book.status?(
                     <Button onClick={() => this.showConfirm(this.props.match.params.id)}>Return</Button>
                 ):(
-                    <Link to={'/loan/'+this.state.book.id}><Button>Loan</Button></Link>
+                    <Link to={'/loan/'+this.state.book.id}><Button>Borrow</Button></Link>
                 )}
             >
                 <Descriptions.Item label="ISBN">{this.state.book.isbn}</Descriptions.Item>
