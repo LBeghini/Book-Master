@@ -13,7 +13,7 @@ class Loan extends React.Component{
     }
 
     componentDidMount(){
-        let id = this.props.match.params.id;
+
         fetch('http://localhost:5000/books/bookDetail/'+this.props.match.params.id)
         .then(response => response.json())
         .then( responseJson=> {

@@ -7,8 +7,10 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "nodemon server.js"
   },
-  "nodemonConfig":{
-    "ignore": ["db/*"]
+  "nodemonConfig": {
+    "ignore": [
+      "db/*"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.18.3",

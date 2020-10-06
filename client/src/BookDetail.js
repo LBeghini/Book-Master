@@ -70,7 +70,7 @@ class BookDetail extends React.Component{
                 )
                 }
                 {this.state.book.loan.timestamp?(
-                    <Descriptions.Item label="Status">{this.state.book.loan.timestamp}</Descriptions.Item>
+                    <Descriptions.Item label="Date">{this.state.book.loan.timestamp}</Descriptions.Item>
                 ):(
                     null
                 )
