@@ -72,6 +72,12 @@ To start the server.
 
 From another terminal, go to de client directory and run:
 ```
+npm i
+```
+To install the frontend dependencies
+
+Now, run with:
+```
 npm start
 ```
 You can access the application on the [http://localhost:3000](http://localhost:3000).
