@@ -1,7 +1,7 @@
 import React from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { Card, Button, Modal } from "antd";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const { Meta } = Card;
 const { confirm } = Modal;
@@ -29,7 +29,7 @@ const CardReceive = ({ book }) => {
       hoverable
       headStyle={{ backgroundColor: "#f37370" }}
     >
-      <Link to={"/bookDetail/" + book.id}>
+      <Link href={"/bookDetail/" + book.id}>
         <Meta
           avatar={<UserOutlined />}
           title={"Name: " + book.loan.name}

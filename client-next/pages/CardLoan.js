@@ -1,7 +1,7 @@
 import React from "react";
 import { BookFilled } from "@ant-design/icons";
 import { Card, Button } from "antd";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const { Meta } = Card;
 
@@ -10,7 +10,7 @@ const CardLoan = ({ book }) => {
     <Card
       title={book.title}
       extra={
-        <Link to={"/loan/" + book.id}>
+        <Link href={"/loan/" + book.id}>
           <Button>Borrow</Button>
         </Link>
       }
@@ -18,7 +18,7 @@ const CardLoan = ({ book }) => {
       hoverable
       headStyle={{ backgroundColor: "#8fd460" }}
     >
-      <Link to={"/bookDetail/" + book.id}>
+      <Link href={"/bookDetail/" + book.id}>
         <Meta
           avatar={<BookFilled />}
           title={"Author " + book.author}

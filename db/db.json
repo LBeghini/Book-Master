@@ -8,8 +8,11 @@
       "publisher": "O'Reilly Media",
       "language": "English",
       "isbn": 9352134192,
-      "status": false,
-      "loan": {}
+      "status": true,
+      "loan": {
+        "name": "yoshi",
+        "timestamp": "10/8/2020"
+      }
     },
     {
       "id": 2,
@@ -52,8 +55,11 @@
       "publisher": "O'Reilly Media",
       "language": "English",
       "isbn": 9781449335588,
-      "status": false,
-      "loan": {}
+      "status": true,
+      "loan": {
+        "name": "yoshi",
+        "timestamp": "10/8/2020"
+      }
     },
     {
       "id": 6,
