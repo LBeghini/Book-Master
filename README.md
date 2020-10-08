@@ -13,6 +13,7 @@ To see more about the development progress, visit the [Project](https://github.c
 - [NodeJS](https://nodejs.org/en/)
 - [Express](http://expressjs.com)
 - [lowdb](https://github.com/typicode/lowdb)
+- [NextJS](https://nextjs.org)
 
 ## [Releases](https://github.com/LBeghini/Book-Master/releases)
 
@@ -23,7 +24,7 @@ Each release of this project implements a proposed part of the internship proces
 | :------------                                                                | :---------:  |
 | [Hardcoded Data](https://github.com/LBeghini/Book-Master/releases/tag/v1.0)  |      v1.0    |
 | [Local Date Loan](https://github.com/LBeghini/Book-Master/releases/tag/v2.0) |      v2.0    |
-| [Node Backend](https://github.com/LBeghini/Book-Master/releases/tag/v3.0)    |      v3.0    |
+| [Node Backend](https://github.com/LBeghini/Book-Master/releases/tag/v3.0)    |      v3.2    |
 
 > Access the release page for a better description of what each release implements 
 
