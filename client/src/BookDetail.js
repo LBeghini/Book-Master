@@ -55,9 +55,7 @@ const BookDetail = (props) => {
       style={{ width: "70%" }}
       extra={
         book.status ? (
-          <Button onClick={() => this.showConfirm(props.match.params.id)}>
-            Return
-          </Button>
+          <Button onClick={() => showConfirm(book.id)}>Return</Button>
         ) : (
           <Link to={"/loan/" + book.id}>
             <Button>Borrow</Button>
@@ -81,10 +79,10 @@ const BookDetail = (props) => {
           <Badge status="success" text="Available" />
         )}
       </Descriptions.Item>
-      {book.loan.name ? (
+      {book.loan?.name ? (
         <Descriptions.Item label="UserName">{book.loan.name}</Descriptions.Item>
       ) : null}
-      {book.loan.timestamp ? (
+      {book.loan?.timestamp ? (
         <Descriptions.Item label="Date">
           {book.loan.timestamp}
         </Descriptions.Item>

@@ -8,11 +8,8 @@
       "publisher": "O'Reilly Media",
       "language": "English",
       "isbn": 9352134192,
-      "status": true,
-      "loan": {
-        "name": "Orange",
-        "timestamp": "10/6/2020"
-      }
+      "status": false,
+      "loan": {}
     },
     {
       "id": 2,
@@ -22,11 +19,8 @@
       "publisher": "O'Reilly Media",
       "language": "English",
       "isbn": 9781491904220,
-      "status": true,
-      "loan": {
-        "name": "yoshi",
-        "timestamp": "10/7/2020"
-      }
+      "status": false,
+      "loan": {}
     },
     {
       "id": 3,

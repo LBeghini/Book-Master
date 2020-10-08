@@ -5,8 +5,9 @@ import Header from "./Header";
 import Loan from "./Loan";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Layout, Row, Col } from "antd";
+import Footer from "./Footer";
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
 const App = () => {
   return (
@@ -25,11 +26,7 @@ const App = () => {
           </Col>
         </Row>
       </Content>
-      <Footer style={{ height: "55px", textAlign: "center" }}>
-        <span style={{ verticalAlign: "middle", display: "inline-block" }}>
-          Book Masters ©2020 Created by LBeghini
-        </span>
-      </Footer>
+      <Footer />
     </BrowserRouter>
   );
 };
