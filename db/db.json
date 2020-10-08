@@ -22,8 +22,11 @@
       "publisher": "O'Reilly Media",
       "language": "English",
       "isbn": 9781491904220,
-      "status": false,
-      "loan": {}
+      "status": true,
+      "loan": {
+        "name": "yoshi",
+        "timestamp": "10/7/2020"
+      }
     },
     {
       "id": 3,
