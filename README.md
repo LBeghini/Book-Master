@@ -25,6 +25,7 @@ Each release of this project implements a proposed part of the internship proces
 | [Hardcoded Data](https://github.com/LBeghini/Book-Master/releases/tag/v1.0)  |      v1.0    |
 | [Local Date Loan](https://github.com/LBeghini/Book-Master/releases/tag/v2.0) |      v2.0    |
 | [Node Backend](https://github.com/LBeghini/Book-Master/releases/tag/v3.0)    |      v3.2    |
+| [Extra Next](https://github.com/LBeghini/Book-Master/releases/tag/v4.0)      |      v4.0    |
 
 > Access the release page for a better description of what each release implements 
 
@@ -57,13 +58,14 @@ npm start
 ```
 
 That will run the app in the development mode.  
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+>Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.  
 
-### [v3.0](https://github.com/LBeghini/Book-Master/releases/tag/v3.0)
+### [v3.0](https://github.com/LBeghini/Book-Master/releases/tag/v3.0) and [v4.0](https://github.com/LBeghini/Book-Master/releases/tag/v4.0)
 
-This relese implements a client React and a server Node.
+These releses implements a client React and a server Node.
 
 On the project directory, run:
 ```
@@ -71,7 +73,9 @@ node server.js
 ```
 To start the server.
 
-From another terminal, go to de client directory and run:
+#### React Client
+
+From another terminal, go to the `client` directory and run:
 ```
 npm i
 ```
@@ -81,7 +85,20 @@ Now, run with:
 ```
 npm start
 ```
-You can access the application on the [http://localhost:3000](http://localhost:3000).
+
+#### Next Client
+
+From another terminal, go to the `client` directory and run:
+```
+npm i
+```
+To install the frontend dependencies
+
+Now, run with:
+```
+npm run dev
+```
+>You can access the application on the [http://localhost:3000](http://localhost:3000).
 
 ## License
 
